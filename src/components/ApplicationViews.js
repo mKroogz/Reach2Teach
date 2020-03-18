@@ -26,7 +26,7 @@ const ApplicationViews = props => {
           exact
           path="/"
           render={props => {
-            return hasUser ? <Home /> : <Welcome {...props} />;
+            return hasUser ? <Home hasUser={hasUser}/> : <Welcome {...props} />;
           }}
         />
     </React.Fragment>

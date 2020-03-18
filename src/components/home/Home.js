@@ -1,9 +1,13 @@
 import React from "react";
 
-const loginInfo = sessionStorage.getItem("credentials").slice(12);
-const justUser = loginInfo.split(`"`);
+const Home = props => {
+  let justUser = ["", ""];
 
-const Home = () => {
+  if (props.hasUser) {
+    const loginInfo = sessionStorage.getItem("credentials").slice(12);
+    justUser = loginInfo.split(`"`);
+  }
+
   return (
     <>
       <h1>Welcome to your home page</h1>
