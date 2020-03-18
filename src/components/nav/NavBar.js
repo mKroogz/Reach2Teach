@@ -14,7 +14,7 @@ const NavBar = props => {
     <header>
       <img
         src="https://www.svgrepo.com/show/2873/apple.svg"
-        alt="Acorn Icon"
+        alt="Apple Icon"
       ></img>
       <h1 className="site-title">Reach2Teach</h1>
       <nav>
