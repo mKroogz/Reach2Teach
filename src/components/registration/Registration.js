@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import UserManager from "../../modules/UserManager";
 
 const Registration = props => {
@@ -63,9 +64,9 @@ const Registration = props => {
               userName: register.userName
             };
             if (register.isAdmin) {
-              props.setUser(newCred, users.length, "Teacher");
+              props.setUser(newCred, users.length, 1);
             } else {
-              props.setUser(newCred, users.length, "Parent");
+              props.setUser(newCred, users.length, 0);
             }
           });
       }
@@ -122,6 +123,9 @@ const Registration = props => {
           </button>
         </fieldset>
       </form>
+      <Link className="nav-link" to="/login">
+        Already have an account? Click here to log in!
+      </Link>
     </>
   );
 };
