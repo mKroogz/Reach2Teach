@@ -6,8 +6,11 @@ const TeacherStudentCenter = (props) => {
   const [students, setStudents] = useState([]);
 
   const getStudents = () => {
+    const myStudents = [];
+    
     return StudentManager.getAll().then(allStudents => {
-      setStudents(allStudents);
+      const myStudents = allStudents.filter(student => Number(sessionStorage.getItem("id")) === student.userId)
+      setStudents(myStudents);
     });
   };
 
