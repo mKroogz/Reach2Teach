@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import TeacherStudentCard from "./TeacherStudentCard";
+import TeacherForm from "./TeacherForm";
 import StudentManager from "../../modules/StudentManager";
 
-const TeacherStudentCenter = (props) => {
+const TeacherStudentCenter = props => {
   const [students, setStudents] = useState([]);
 
   const getStudents = () => {
     return StudentManager.getAll().then(allStudents => {
-      setStudents(allStudents);
+      const myStudents = allStudents.filter(
+        student => Number(sessionStorage.getItem("id")) === student.userId
+      );
+      setStudents(myStudents);
     });
   };
 
@@ -17,16 +21,16 @@ const TeacherStudentCenter = (props) => {
 
   return (
     <>
-    <h2>Manage Students:</h2>
-    <div className="container-cards">
-      {students.map(student => (
-        <TeacherStudentCard
-          key={student.id}
-          student={student}
-          {...props}
-        />
-      ))}
-    </div>
+      <h2>Make a new Student:</h2>
+      <div>
+        <TeacherForm key={1} getStudents={getStudents} {...props} />
+      </div>
+      <h2>Manage Students:</h2>
+      <div className="container-cards">
+        {students.map(student => (
+          <TeacherStudentCard key={student.id} student={student} {...props} />
+        ))}
+      </div>
     </>
   );
 };

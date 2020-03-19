@@ -21,9 +21,9 @@ const Login = props => {
         if (user.userName === credentials.userName) {
           valid = true;
           if (user.isAdmin) {
-            props.setUser(credentials, users.length, 1);
+            props.setUser(credentials, user.id, 1);
           } else {
-            props.setUser(credentials, users.length, 0);
+            props.setUser(credentials, user.id, 0);
           }
           props.history.push("/");
         }
