@@ -1,12 +1,7 @@
 import React from "react";
 
 const Home = props => {
-  let justUser = ["", ""];
-
-  if (props.hasUser) {
-    const loginInfo = sessionStorage.getItem("credentials").slice(12);
-    justUser = loginInfo.split(`"`);
-  }
+  const justUser = sessionStorage.getItem("credentials").slice(12).split(`"`);
 
   return (
     <>
