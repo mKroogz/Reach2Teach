@@ -10,6 +10,10 @@ const NavBar = props => {
     props.history.push("/");
   };
 
+  const handleStudentButton = () => {
+    props.history.push("/students");
+  }
+
   return (
     <header>
       <img
@@ -37,6 +41,11 @@ const NavBar = props => {
               <Link className="nav-link" to="/" onClick={handleLogout}>
                 Logout
               </Link>
+            </li>
+          ) : null}
+          {props.hasUser ? (
+            <li>
+                <button type="button" onClick={handleStudentButton}>Student Center</button>
             </li>
           ) : null}
         </ul>
