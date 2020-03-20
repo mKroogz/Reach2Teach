@@ -35,6 +35,7 @@ const TeacherStudentCenter = props => {
           <TeacherStudentCard
             key={student.id}
             student={student}
+            getStudents={getStudents}
             deleteStudent={deleteStudent}
             {...props}
           />
