@@ -15,6 +15,10 @@ const TeacherStudentCenter = props => {
     });
   };
 
+  const deleteStudent = id => {
+    StudentManager.delete(id).then(getStudents);
+  };
+
   useEffect(() => {
     getStudents();
   }, []);
@@ -28,7 +32,13 @@ const TeacherStudentCenter = props => {
       <h2>Manage Students:</h2>
       <div className="container-cards">
         {students.map(student => (
-          <TeacherStudentCard key={student.id} student={student} {...props} />
+          <TeacherStudentCard
+            key={student.id}
+            student={student}
+            getStudents={getStudents}
+            deleteStudent={deleteStudent}
+            {...props}
+          />
         ))}
       </div>
     </>
