@@ -6,6 +6,7 @@ import Login from "./auth/Login";
 import Registration from "./registration/Registration";
 import TeacherStudentCenter from "./student/TeacherStudentCenter";
 import LessonList from "./lesson/LessonList"
+import LessonForm from "./lesson/LessonForm"
 
 const ApplicationViews = props => {
   const setUser = props.setUser;
@@ -47,6 +48,12 @@ const ApplicationViews = props => {
         path="/lessons"
         render={props => {
           return hasUser ? <LessonList {...props} /> : <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        path="/lesson/new"
+        render={props => {
+          return hasUser ? <LessonForm {...props} /> : <Redirect to="/login" />;
         }}
       />
     </React.Fragment>
