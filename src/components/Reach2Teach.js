@@ -11,6 +11,7 @@ const Reach2Teach = () => {
         sessionStorage.setItem("credentials", JSON.stringify(user));
         sessionStorage.setItem("type", userType)
         sessionStorage.setItem("id", id)
+        sessionStorage.setItem("current", 0)
         setHasUser(isAuthenticated());
     }
 
