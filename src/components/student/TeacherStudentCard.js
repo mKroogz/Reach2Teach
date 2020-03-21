@@ -8,6 +8,11 @@ const TeacherStudentCard = props => {
     setIsEdit(!isEdit);
   };
 
+  const selectCurrentStudent = () => {
+    sessionStorage.setItem("current", props.student.id)
+    props.getCurrentStudent()
+  }
+
   useEffect(() => {
     changeEdit();
   }, []);
@@ -17,6 +22,7 @@ const TeacherStudentCard = props => {
       key={props.student.id}
       student={props.student}
       getStudents={props.getStudents}
+      getCurrentStudent={props.getCurrentStudent}
       changeEdit={changeEdit}
       {...props}
     />
@@ -28,6 +34,7 @@ const TeacherStudentCard = props => {
             {props.student.firstName} {props.student.lastName}{" "}
           </span>
         </strong>
+        <button type="button" onClick={selectCurrentStudent}>Select</button>
         <button type="button" onClick={changeEdit}>Edit</button>
         <button
           type="button"

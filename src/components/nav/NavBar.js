@@ -32,7 +32,7 @@ const NavBar = props => {
           ) : (
             <li>
               <Link className="nav-link" to="/">
-                Reach2Teach
+                Welcome
               </Link>
             </li>
           )}

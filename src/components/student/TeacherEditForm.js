@@ -24,7 +24,7 @@ const TeacherEditForm = props => {
       userId: existingStudent.userId
     };
 
-    StudentManager.update(editedStudent).then(props.getStudents).then(props.changeEdit)
+    StudentManager.update(editedStudent).then(props.getStudents).then(props.getCurrentStudent).then(props.changeEdit)
   }
 
   useEffect(() => {
