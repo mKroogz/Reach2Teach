@@ -1,8 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./NavBar.css"
-
+import "./NavBar.css";
 
 const NavBar = props => {
   const handleLogout = () => {
@@ -12,7 +11,7 @@ const NavBar = props => {
 
   const handleStudentButton = () => {
     props.history.push("/students");
-  }
+  };
 
   return (
     <header>
@@ -38,6 +37,13 @@ const NavBar = props => {
           )}
           {props.hasUser ? (
             <li>
+              <Link className="nav-link" to="/lessons">
+                Lessons
+              </Link>
+            </li>
+          ) : null}
+          {props.hasUser ? (
+            <li>
               <Link className="nav-link" to="/" onClick={handleLogout}>
                 Logout
               </Link>
@@ -45,7 +51,9 @@ const NavBar = props => {
           ) : null}
           {props.hasUser ? (
             <li>
-                <button type="button" onClick={handleStudentButton}>Student Center</button>
+              <button type="button" onClick={handleStudentButton}>
+                Student Center
+              </button>
             </li>
           ) : null}
         </ul>
