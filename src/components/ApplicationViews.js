@@ -5,8 +5,10 @@ import Welcome from "./welcome/Welcome";
 import Login from "./auth/Login";
 import Registration from "./registration/Registration";
 import TeacherStudentCenter from "./student/TeacherStudentCenter";
-import LessonList from "./lesson/LessonList"
-import LessonForm from "./lesson/LessonForm"
+import LessonList from "./lesson/LessonList";
+import LessonForm from "./lesson/LessonForm";
+import LessonDetail from "./lesson/LessonDetail"
+import LessonEditForm from "./lesson/LessonEditForm"
 
 const ApplicationViews = props => {
   const setUser = props.setUser;
@@ -51,9 +53,33 @@ const ApplicationViews = props => {
         }}
       />
       <Route
-        path="/lesson/new"
+        path="/lessons/new"
         render={props => {
           return hasUser ? <LessonForm {...props} /> : <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        exact
+        path="/lessons/:lessonId(\d+)"
+        render={props => {
+          return hasUser ? (
+            <LessonDetail
+              lessonId={parseInt(props.match.params.lessonId)}
+              {...props}
+            />
+          ) : (
+            <Redirect to="/login" />
+          );
+        }}
+      />
+      <Route
+        path="/lessons/:lessonId(\d+)/edit"
+        render={props => {
+          return hasUser ? (
+            <LessonEditForm {...props} />
+          ) : (
+            <Redirect to="/login" />
+          );
         }}
       />
     </React.Fragment>
