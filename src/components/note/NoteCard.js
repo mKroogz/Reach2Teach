@@ -16,15 +16,21 @@ const NoteCard = props => {
   return (
     <div className="card">
       <div className="card-content">
-        <h3>{date}</h3>
+        <h2>{date}</h2>
         <p>
           {props.note.note}
         </p>
         <button
           type="button"
-          onClick={() => props.history.push(`/notes/${props.note.id}`)}
+          onClick={() => props.history.push(`/notes/${props.note.id}/edit`)}
         >
-          Modify Note
+          Edit Note
+        </button>
+        <button
+          type="button"
+          onClick={() => props.deleteNote(props.note.id)}
+        >
+          Delete Note
         </button>
       </div>
     </div>

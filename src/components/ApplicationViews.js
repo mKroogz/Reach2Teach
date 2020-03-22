@@ -11,6 +11,7 @@ import LessonDetail from "./lesson/LessonDetail"
 import LessonEditForm from "./lesson/LessonEditForm"
 import NoteList from "./note/NoteList"
 import NoteForm from "./note/NoteForm"
+import NoteEditForm from "./note/NoteEditForm"
 
 const ApplicationViews = props => {
   const setUser = props.setUser;
@@ -58,6 +59,16 @@ const ApplicationViews = props => {
         path="/notes/new"
         render={props => {
           return hasUser ? <NoteForm {...props} /> : <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        path="/notes/:noteId(\d+)/edit"
+        render={props => {
+          return hasUser ? (
+            <NoteEditForm noteId={parseInt(props.match.params.noteId)} {...props} />
+          ) : (
+            <Redirect to="/login" />
+          );
         }}
       />
       <Route
