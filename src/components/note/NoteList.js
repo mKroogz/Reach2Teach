@@ -20,6 +20,12 @@ const NoteList = props => {
     props.history.push("/students");
   };
 
+  const deleteNote = id => {
+    NoteManager.delete(id).then(() =>
+      NoteManager.getAll().then(setNotes)
+    );
+  };
+
   useEffect(() => {
     getNotes();
   }, []);
@@ -34,14 +40,14 @@ const NoteList = props => {
           className="btn"
           onClick={() => {
             props.history.push("/notes/new");
-          }}
+          }} 
         >
           Write New Note
         </button>
       </section>
       <div className="container-cards">
         {notes.map(note => (
-          <NoteCard key={note.id} note={note} {...props} />
+          <NoteCard key={note.id} note={note} deleteNote={deleteNote} {...props} />
         ))}
       </div>
     </>
