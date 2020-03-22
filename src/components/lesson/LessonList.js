@@ -33,7 +33,7 @@ const LessonList = props => {
           type="button"
           className="btn"
           onClick={() => {
-            props.history.push("/lesson/new");
+            props.history.push("/lessons/new");
           }}
         >
           Make New Lesson Plan
