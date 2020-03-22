@@ -5,8 +5,9 @@ import "./NavBar.css";
 
 const NavBar = props => {
   const handleLogout = () => {
+    if(window.confirm("Are you sure you want to log out?")){
     props.clearUser();
-    props.history.push("/");
+    }
   };
 
   const handleStudentButton = () => {
