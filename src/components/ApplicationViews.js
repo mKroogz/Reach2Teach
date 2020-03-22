@@ -9,6 +9,7 @@ import LessonList from "./lesson/LessonList";
 import LessonForm from "./lesson/LessonForm";
 import LessonDetail from "./lesson/LessonDetail"
 import LessonEditForm from "./lesson/LessonEditForm"
+import NoteList from "./note/NoteList"
 
 const ApplicationViews = props => {
   const setUser = props.setUser;
@@ -43,6 +44,13 @@ const ApplicationViews = props => {
           ) : (
             <Redirect to="/login" />
           );
+        }}
+      />
+      <Route
+        exact
+        path="/notes"
+        render={props => {
+          return hasUser ? <NoteList {...props} /> : <Redirect to="/login" />;
         }}
       />
       <Route
