@@ -13,7 +13,6 @@ const LessonForm = props => {
   const handleFieldChange = evt => {
     const stateToChange = { ...lessonPlan };
     stateToChange[evt.target.id] = evt.target.value;
-    console.log(evt.target.value);
     setLessonPlan(stateToChange);
   };
 
