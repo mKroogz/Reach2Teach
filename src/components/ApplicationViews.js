@@ -10,6 +10,7 @@ import LessonForm from "./lesson/LessonForm";
 import LessonDetail from "./lesson/LessonDetail"
 import LessonEditForm from "./lesson/LessonEditForm"
 import NoteList from "./note/NoteList"
+import NoteForm from "./note/NoteForm"
 
 const ApplicationViews = props => {
   const setUser = props.setUser;
@@ -51,6 +52,12 @@ const ApplicationViews = props => {
         path="/notes"
         render={props => {
           return hasUser ? <NoteList {...props} /> : <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        path="/notes/new"
+        render={props => {
+          return hasUser ? <NoteForm {...props} /> : <Redirect to="/login" />;
         }}
       />
       <Route
