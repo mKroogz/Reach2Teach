@@ -10,9 +10,24 @@ const LessonForm = props => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
+  const formatDate = (value) => {
+    const dateArray = value.split("-");
+    const temp = dateArray[0];
+    dateArray[0] = dateArray[1];
+    dateArray[1] = dateArray[2];
+    dateArray[2] = temp;
+    return `${dateArray[0]}/${dateArray[1]}/${dateArray[2]}`;
+  };
+
   const handleFieldChange = evt => {
     const stateToChange = { ...lessonPlan };
     stateToChange[evt.target.id] = evt.target.value;
+    setLessonPlan(stateToChange);
+  };
+
+  const handleDateChange = evt => {
+    const stateToChange = { ...lessonPlan };
+    stateToChange[evt.target.id] = formatDate(evt.target.value);
     setLessonPlan(stateToChange);
   };
 
@@ -66,7 +81,7 @@ const LessonForm = props => {
             </div>
             <div className="newDate">
             <label htmlFor="date">Date:</label>
-            <input type="date" onChange={handleFieldChange} id="date" />
+            <input type="date" onChange={handleDateChange} id="date" />
             </div>
           </div>
           <div className="alignRight">
