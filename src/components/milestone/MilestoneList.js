@@ -10,29 +10,32 @@ const MilestoneList = props => {
   const [milestones, setMilestones] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [notCompleted, setNotCompleted] = useState([]);
-  const [isManaging, setIsManaging] = useState(true);
+  const [isManaging, setIsManaging] = useState(false);
 
   const pushToStudentCenter = () => {
-    if (!student) {
-      window.alert(
-        "Select a Student from the Student Center to begin planning"
-      );
-      props.history.push("/students");
-    }
+    window.alert("Select a Student from the Student Center to begin planning");
+    props.history.push("/students");
   };
 
   const getMilestones = () => {
-    return MilestoneManager.getAll().then(milestonesFromAPI => {
-        const completedMilestones = milestonesFromAPI.filter(
+    if (!student) {
+      pushToStudentCenter();
+    } else {
+      return MilestoneManager.getAll().then(milestonesFromAPI => {
+        const currentMilestones = milestonesFromAPI.filter(
+          milestone => milestone.studentId === student
+        );
+        const completedMilestones = currentMilestones.filter(
           milestone => milestone.completeDate !== ""
         );
-        const unCompletedMilestones = milestonesFromAPI.filter(
+        const unCompletedMilestones = currentMilestones.filter(
           milestone => milestone.completeDate === ""
         );
-        setMilestones(milestonesFromAPI);
+        setMilestones(currentMilestones);
         setCompleted(completedMilestones);
         setNotCompleted(unCompletedMilestones);
-    });
+      });
+    }
   };
 
   const deleteMilestone = id => {
@@ -55,8 +58,6 @@ const MilestoneList = props => {
 
   useEffect(() => {
     getMilestones();
-    toggleManageView();
-    pushToStudentCenter();
   }, []);
 
   return !isManaging ? (

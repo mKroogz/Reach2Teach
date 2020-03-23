@@ -7,12 +7,14 @@ const LessonList = props => {
   const student = Number(sessionStorage.getItem("current"));
 
   const getLessons = () => {
-    return LessonManager.getAll().then(allLessons => {
-      const myLessons = allLessons.filter(
-        lesson => student === lesson.studentId
-      );
-      setLessonPlans(myLessons);
-    });
+    if (student) {
+      return LessonManager.getAll().then(allLessons => {
+        const myLessons = allLessons.filter(
+          lesson => student === lesson.studentId
+        );
+        setLessonPlans(myLessons);
+      });
+    }
   };
 
   const pushToStudentCenter = () => {

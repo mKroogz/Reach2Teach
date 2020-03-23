@@ -34,6 +34,15 @@ const LessonForm = props => {
     <>
       <form>
         <fieldset>
+        <div className="Back">
+            <button
+              type="button"
+              disabled={isLoading}
+              onClick={() => props.history.push("/notes")}
+            >
+              Go Back
+            </button>
+          </div>
           <div className="formgrid">
             <div className="newTitle">
             <label htmlFor="title">Title:</label>

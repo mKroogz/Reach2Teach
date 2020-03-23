@@ -61,6 +61,15 @@ const NoteForm = props => {
     <>
       <form>
         <fieldset>
+        <div className="Back">
+            <button
+              type="button"
+              disabled={isLoading}
+              onClick={() => props.history.push("/notes")}
+            >
+              Go Back
+            </button>
+          </div>
           <div className="formgrid">
             <label htmlFor="note">Note:</label>
             <textarea

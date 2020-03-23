@@ -7,12 +7,12 @@ const NoteList = props => {
   const student = Number(sessionStorage.getItem("current"));
 
   const getNotes = () => {
-    return NoteManager.getAll().then(allNotes => {
-      const myNotes = allNotes.filter(
-        note => student === note.studentId
-      );
-      setNotes(myNotes);
-    });
+    if (student) {
+      return NoteManager.getAll().then(allNotes => {
+        const myNotes = allNotes.filter(note => student === note.studentId);
+        setNotes(myNotes);
+      });
+    }
   };
 
   const pushToStudentCenter = () => {
@@ -21,9 +21,7 @@ const NoteList = props => {
   };
 
   const deleteNote = id => {
-    NoteManager.delete(id).then(() =>
-      NoteManager.getAll().then(setNotes)
-    );
+    NoteManager.delete(id).then(() => getNotes());
   };
 
   useEffect(() => {
@@ -40,14 +38,19 @@ const NoteList = props => {
           className="btn"
           onClick={() => {
             props.history.push("/notes/new");
-          }} 
+          }}
         >
           Write New Note
         </button>
       </section>
       <div className="container-cards">
         {notes.map(note => (
-          <NoteCard key={note.id} note={note} deleteNote={deleteNote} {...props} />
+          <NoteCard
+            key={note.id}
+            note={note}
+            deleteNote={deleteNote}
+            {...props}
+          />
         ))}
       </div>
     </>
