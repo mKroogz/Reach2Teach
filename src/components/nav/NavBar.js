@@ -52,6 +52,13 @@ const NavBar = props => {
           ) : null}
           {props.hasUser ? (
             <li>
+              <Link className="nav-link" to="/milestones">
+                Milestones
+              </Link>
+            </li>
+          ) : null}
+          {props.hasUser ? (
+            <li>
               <Link className="nav-link" to="/" onClick={handleLogout}>
                 Logout
               </Link>

@@ -12,6 +12,7 @@ import LessonEditForm from "./lesson/LessonEditForm"
 import NoteList from "./note/NoteList"
 import NoteForm from "./note/NoteForm"
 import NoteEditForm from "./note/NoteEditForm"
+import MilestoneList from "./milestone/MilestoneList"
 
 const ApplicationViews = props => {
   const setUser = props.setUser;
@@ -46,6 +47,13 @@ const ApplicationViews = props => {
           ) : (
             <Redirect to="/login" />
           );
+        }}
+      />
+      <Route
+        exact
+        path="/milestones"
+        render={props => {
+          return hasUser ? <MilestoneList {...props} /> : <Redirect to="/login" />;
         }}
       />
       <Route
