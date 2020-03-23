@@ -31,6 +31,7 @@ const LessonDetail = props => {
           <span style={{ color: "darkslategrey" }}>{lesson.title}</span>
         </h3>
         <p>{lesson.plan}</p>
+        <h4>{lesson.date}</h4>
         <button
           type="button"
           onClick={() => props.history.push(`/lessons/${props.lessonId}/edit`)}
