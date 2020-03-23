@@ -56,7 +56,7 @@ const TeacherStudentCenter = props => {
 
   return (
     <>
-      <h2>Make a new Student:</h2>
+      <h2>Make a New Student:</h2>
       <div>
         <TeacherForm key={1} getStudents={getStudents} {...props} />
       </div>

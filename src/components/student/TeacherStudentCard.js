@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TeacherEditForm from "./TeacherEditForm";
 
 const TeacherStudentCard = props => {
-  const [isEdit, setIsEdit] = useState(true);
+  const [isEdit, setIsEdit] = useState(false);
 
   const changeEdit = () => {
     setIsEdit(!isEdit);
@@ -12,10 +12,6 @@ const TeacherStudentCard = props => {
     sessionStorage.setItem("current", props.student.id)
     props.getCurrentStudent()
   }
-
-  useEffect(() => {
-    changeEdit();
-  }, []);
 
   return isEdit ? (
     <TeacherEditForm

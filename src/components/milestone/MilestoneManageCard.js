@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MilestoneEditForm from "./MilestoneEditForm";
 
 const MilestoneManageCard = props => {
-  const [isEdit, setIsEdit] = useState(true);
+  const [isEdit, setIsEdit] = useState(false);
 
   const changeEdit = () => {
     setIsEdit(!isEdit);
   };
-
-  useEffect(() => {
-    changeEdit();
-  }, []);
 
   return isEdit ? (
     <MilestoneEditForm
