@@ -42,11 +42,16 @@ const ApplicationViews = props => {
         exact
         path="/students"
         render={props => {
-          return hasUser ? (
-            <TeacherStudentCenter {...props} />
-          ) : (
-            <Redirect to="/login" />
-          );
+          if (hasUser) {
+            return <MessageList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+          // return hasUser ? (
+          //   <TeacherStudentCenter {...props} />
+          // ) : (
+          //   <Redirect to="/login" />
+          // );
         }}
       />
       <Route
