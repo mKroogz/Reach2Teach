@@ -13,6 +13,7 @@ import NoteList from "./note/NoteList"
 import NoteForm from "./note/NoteForm"
 import NoteEditForm from "./note/NoteEditForm"
 import MilestoneList from "./milestone/MilestoneList"
+import ParentCenter from "./student/ParentCenter"
 
 const ApplicationViews = props => {
   const setUser = props.setUser;
@@ -42,11 +43,14 @@ const ApplicationViews = props => {
         exact
         path="/students"
         render={props => {
-          return hasUser ? (
-            <TeacherStudentCenter {...props} />
-          ) : (
-            <Redirect to="/login" />
-          );
+          const isTeacher = Number(sessionStorage.getItem("type"))
+          if (hasUser && isTeacher === 1) {
+            return <TeacherStudentCenter {...props} />
+          } else if (hasUser && isTeacher === 0) {
+            return <ParentCenter {...props}/>
+          } else {
+            return <Redirect to="/login" />
+          }
         }}
       />
       <Route

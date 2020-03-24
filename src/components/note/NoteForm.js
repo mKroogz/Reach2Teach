@@ -37,27 +37,25 @@ const NoteForm = props => {
     }
   };
 
-//   TODO: IMPLEMENT PARENT VIEW
-
-//   const constructPrivateNote = evt => {
-//     evt.preventDefault();
-//     const stateToChange = { ...note };
-//     stateToChange["isPrivate"] = true;
-//     setNote(stateToChange);
-//     if (note.note === "") {
-//       window.alert("Notes can not be blank");
-//     } else {
-//       if (
-//         window.confirm("Only you will be able to see this note.  Is that ok?")
-//       ) {
-//         stateToChange["date"] = moment().format("YYYY-MM-DD");
-//         setIsLoading(true);
-//         NoteManager.post(stateToChange).then(() =>
-//           props.history.push("/notes")
-//         );
-//       }
-//     }
-//   };
+  const constructPrivateNote = evt => {
+    evt.preventDefault();
+    const stateToChange = { ...note };
+    stateToChange["isPrivate"] = true;
+    setNote(stateToChange);
+    if (note.note === "") {
+      window.alert("Notes can not be blank");
+    } else {
+      if (
+        window.confirm("Only you will be able to see this note.  Is that ok?")
+      ) {
+        stateToChange["date"] = moment().format("YYYY-MM-DD");
+        setIsLoading(true);
+        NoteManager.post(stateToChange).then(() =>
+          props.history.push("/notes")
+        );
+      }
+    }
+  };
 
   return (
     <>
@@ -91,7 +89,7 @@ const NoteForm = props => {
               Make Public Note
             </button>
           </div>
-          {/* <div className="Private">
+          <div className="Private">
             <button
               type="button"
               disabled={isLoading}
@@ -99,7 +97,7 @@ const NoteForm = props => {
             >
               Make Private Note
             </button>
-          </div> */}
+          </div>
         </fieldset>
       </form>
     </>
