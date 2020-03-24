@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TeacherEditForm from "./TeacherEditForm";
 
 const TeacherStudentCard = props => {
@@ -26,8 +26,8 @@ const TeacherStudentCard = props => {
     <div className="card">
       <div className="card-content">
         <strong>
-          <span className="card-name">
-            {props.student.firstName} {props.student.lastName}{" "}
+          <span className={"card-name"}>
+            {props.student.firstName} {props.student.lastName}
           </span>
         </strong>
         <button type="button" onClick={selectCurrentStudent}>Select</button>

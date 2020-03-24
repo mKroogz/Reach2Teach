@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const TeacherCurrentStudent = props => {
   return (
@@ -7,7 +7,7 @@ const TeacherCurrentStudent = props => {
         <div className="card-content">
           <strong>
             <span className="card-name">
-              {props.currentStudent.firstName} {props.currentStudent.lastName}{" "}
+              {props.currentStudent.firstName} {props.currentStudent.lastName}
             </span>
           </strong>
         </div>
