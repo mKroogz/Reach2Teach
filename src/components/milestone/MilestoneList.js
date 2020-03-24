@@ -7,6 +7,8 @@ import moment from "moment";
 
 const MilestoneList = props => {
   const student = Number(sessionStorage.getItem("current"));
+  const isTeacher = Number(sessionStorage.getItem("type"));
+
   const [milestones, setMilestones] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [notCompleted, setNotCompleted] = useState([]);
@@ -81,9 +83,9 @@ const MilestoneList = props => {
         ))}
       </div>
       <section className="manageViewToggle">
-        <button type="button" className="btn" onClick={toggleManageView}>
+      {isTeacher ?<button type="button" className="btn" onClick={toggleManageView}>
           Manage Milestones
-        </button>
+        </button> : null}
       </section>
     </>
   ) : (
@@ -97,6 +99,7 @@ const MilestoneList = props => {
           <MilestoneManageCard
             key={milestone.id}
             milestone={milestone}
+            isTeacher={isTeacher}
             getMilestones={getMilestones}
             deleteMilestone={deleteMilestone}
             {...props}
