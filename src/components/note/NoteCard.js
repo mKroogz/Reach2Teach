@@ -20,6 +20,7 @@ const NoteCard = props => {
         <p>
           {props.note.note}
         </p>
+        {props.isTeacher ? <section className = "buttons">
         <button
           type="button"
           onClick={() => props.history.push(`/notes/${props.note.id}/edit`)}
@@ -31,7 +32,8 @@ const NoteCard = props => {
           onClick={() => props.deleteNote(props.note.id)}
         >
           Delete Note
-        </button>
+        </button> 
+        </section>: null}
       </div>
     </div>
   );

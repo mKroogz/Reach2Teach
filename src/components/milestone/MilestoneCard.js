@@ -5,12 +5,12 @@ const MilestoneCard = props => {
     return (
       <div className="milestoneCard">
         <div className="milestoneCardContent">
-          <input
+        {props.isTeacher ? <input
             type="checkbox"
             id="completeDate"
             checked={false}
             onChange={() => props.toggleCompleteMilestone(props.milestone.id, false)}
-          />
+          /> : null }
             <span className="milestoneCardTitle">{props.milestone.milestone}</span>
         </div>
       </div>
@@ -19,12 +19,12 @@ const MilestoneCard = props => {
     return (
         <div className="milestoneCard">
         <div className="milestoneCardContent">
-          <input
+        {props.isTeacher ? <input
             type="checkbox"
             id="completeDate"
             checked={true}
             onChange={() => props.toggleCompleteMilestone(props.milestone.id, true)}
-          />
+          /> : null }
             <strong><span className="milestoneCardTitle">{props.milestone.milestone} Completed: {props.milestone.completeDate}</span></strong>
         </div>
       </div>

@@ -5,13 +5,19 @@ import NoteManager from "../../modules/NoteManager";
 const NoteList = props => {
   const [notes, setNotes] = useState([]);
   const student = Number(sessionStorage.getItem("current"));
+  const isTeacher = Number(sessionStorage.getItem("type"));
 
   const getNotes = () => {
     if (student) {
-      return NoteManager.getAll().then(allNotes => {
+      return isTeacher ? (NoteManager.getAll().then(allNotes => {
         const myNotes = allNotes.filter(note => student === note.studentId);
-        setNotes(myNotes);
-      });
+        setNotes(myNotes)
+      })) : (
+        NoteManager.getAll().then(allNotes => {
+          const myNotes = allNotes.filter(note => student === note.studentId && !note.isPrivate);
+          setNotes(myNotes)
+        })
+      )
     }
   };
 
@@ -33,7 +39,7 @@ const NoteList = props => {
   ) : (
     <>
       <section className="section-content">
-        <button
+      {isTeacher ? <button
           type="button"
           className="btn"
           onClick={() => {
@@ -41,13 +47,14 @@ const NoteList = props => {
           }}
         >
           Write New Note
-        </button>
+        </button>  : null}
       </section>
       <div className="container-cards">
         {notes.map(note => (
           <NoteCard
             key={note.id}
             note={note}
+            isTeacher={isTeacher}
             deleteNote={deleteNote}
             {...props}
           />
