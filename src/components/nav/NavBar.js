@@ -1,12 +1,14 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./NavBar.css";
+import { Navbar, NavItem} from 'react-materialize';
+// import "./NavBar.css";
+
 
 const NavBar = props => {
   const handleLogout = () => {
-    if(window.confirm("Are you sure you want to log out?")){
-    props.clearUser();
+    if (window.confirm("Are you sure you want to log out?")) {
+      props.clearUser();
     }
   };
 
@@ -15,66 +17,29 @@ const NavBar = props => {
   };
 
   return (
-    <header>
-      <img
-        src="https://www.svgrepo.com/show/2873/apple.svg"
-        alt="Apple Icon"
-      ></img>
-      <h1 className="site-title">Reach2Teach</h1>
-      <nav>
-        <ul className="container">
-          {props.hasUser ? (
-            <li>
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <Link className="nav-link" to="/">
-                Welcome
-              </Link>
-            </li>
-          )}
-          {props.hasUser ? (
-            <li>
-              <Link className="nav-link" to="/lessons">
-                Lessons
-              </Link>
-            </li>
-          ) : null}
-          {props.hasUser ? (
-            <li>
-              <Link className="nav-link" to="/notes">
-                Notes
-              </Link>
-            </li>
-          ) : null}
-          {props.hasUser ? (
-            <li>
-              <Link className="nav-link" to="/milestones">
-                Milestones
-              </Link>
-            </li>
-          ) : null}
-          {props.hasUser ? (
-            <li>
-              <Link className="nav-link" to="/" onClick={handleLogout}>
-                Logout
-              </Link>
-            </li>
-          ) : null}
-          {props.hasUser ? (
-            <li>
-              <button type="button" onClick={handleStudentButton}>
-                Student Center
-              </button>
-            </li>
-          ) : null}
-        </ul>
-      </nav>
-    </header>
+    <Navbar
+    alignLinks="right"
+    brand={<a className="brand-logo" href="#">Logo</a>}
+    options={{
+      draggable: true,
+      edge: 'left',
+      inDuration: 250,
+      onCloseEnd: null,
+      onCloseStart: null,
+      onOpenEnd: null,
+      onOpenStart: null,
+      outDuration: 200,
+      preventScrolling: true
+    }}
+  >
+    <NavItem href="">
+      Getting started
+    </NavItem>
+    <NavItem href="components.html">
+      Components
+    </NavItem>
+  </Navbar>
   );
 };
 
-export default withRouter(NavBar);
+export default NavBar;
