@@ -59,7 +59,7 @@ const TeacherStudentCenter = props => {
     <>
       <h2>Claim your Child:</h2>
       <div>
-        <ParentForm key={1} getMyStudents={getMyStudents} {...props} />
+        <ParentForm key={1} students={students} getMyStudents={getMyStudents} {...props} />
       </div>
       <h2>Your Current Child:</h2>
       <div>

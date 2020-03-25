@@ -21,9 +21,9 @@ const LessonEditForm = props => {
   };
 
   const handleDateChange = evt => {
-    const stateToChange = { ...lessonPlan };
+    const stateToChange = { ...lesson };
     stateToChange[evt.target.id] = formatDate(evt.target.value);
-    setLessonPlan(stateToChange);
+    setLesson(stateToChange);
   };
 
   const updateExistingLesson = evt => {
@@ -77,7 +77,7 @@ const LessonEditForm = props => {
             </div>
             <div className="newDate">
             <label htmlFor="date">Date:</label>
-            <input type="date" onChange={handleDateChange} id="date" value={lesson.date}/>
+            <input type="date" onChange={handleDateChange} id="date"/>
             </div>
           </div>
           <div className="alignRight">
