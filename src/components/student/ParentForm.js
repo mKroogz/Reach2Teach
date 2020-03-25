@@ -17,11 +17,22 @@ const ParentForm = props => {
 
   const constructNewChild = evt => {
     let match = false;
+    let alreadyClaimed = false;
     let childId = 0;
     evt.preventDefault();
     if (student.firstName === "" || student.lastName === "") {
       window.alert("Please fully fill out student name");
     } else {
+      props.students.map(child => {
+        if (
+          child.student.firstName === student.firstName &&
+          child.student.lastName === student.lastName
+        ) {
+          alreadyClaimed = true;
+          window.alert("You already have this student in your list");
+        }
+      })
+      if (!alreadyClaimed) {
       StudentManager.getAll().then(allStudents => {
         allStudents.map(child => {
           if (
@@ -43,7 +54,7 @@ const ParentForm = props => {
             "Your student was not found. Please try again or contact their teacher to add them"
           );
         }
-      });
+      })};
       evt.target.firstName.value = "";
       evt.target.lastName.value = "";
     }

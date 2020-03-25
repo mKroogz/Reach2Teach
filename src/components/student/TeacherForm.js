@@ -25,6 +25,7 @@ const TeacherForm = props => {
     }
   };
 
+  
   return (
     <>
       <form onSubmit={constructNewStudent}>
