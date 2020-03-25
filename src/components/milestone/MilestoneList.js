@@ -68,6 +68,7 @@ const MilestoneList = props => {
         {completed.map(milestone => (
           <MilestoneCard
             key={milestone.id}
+            isTeacher={isTeacher}
             milestone={milestone}
             toggleCompleteMilestone={toggleCompleteMilestone}
             {...props}
@@ -77,6 +78,7 @@ const MilestoneList = props => {
           <MilestoneCard
             key={milestone.id}
             milestone={milestone}
+            isTeacher={isTeacher}
             toggleCompleteMilestone={toggleCompleteMilestone}
             {...props}
           />
@@ -99,7 +101,6 @@ const MilestoneList = props => {
           <MilestoneManageCard
             key={milestone.id}
             milestone={milestone}
-            isTeacher={isTeacher}
             getMilestones={getMilestones}
             deleteMilestone={deleteMilestone}
             {...props}

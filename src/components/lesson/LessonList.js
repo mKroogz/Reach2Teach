@@ -42,7 +42,17 @@ const LessonList = props => {
         </button>
       </section>
       <div className="container-cards">
-        {lessonPlans.map(lesson => (
+        {lessonPlans.sort((a, b) => {
+          if (a.date < b.date) {
+            return -1;
+          } else if (a.date > b.date) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }),
+        
+        lessonPlans.map(lesson => (
           <LessonCard key={lesson.id} lesson={lesson} {...props} />
         ))}
       </div>
