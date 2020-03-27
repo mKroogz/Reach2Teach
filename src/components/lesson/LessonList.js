@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LessonCard from "./LessonCard";
 import LessonManager from "../../modules/LessonManager";
+import { Button } from "react-materialize";
 
 const LessonList = props => {
   const [lessonPlans, setLessonPlans] = useState([]);
@@ -30,31 +31,35 @@ const LessonList = props => {
     <div onClick={pushToStudentCenter()}>Loading...</div>
   ) : (
     <>
-      <section className="section-content">
-        <button
-          type="button"
-          className="btn"
+      <div className="section center"> 
+        <Button
+          node="button"
+          style={{
+            marginRight: "5px"
+          }}
+          waves="light"
           onClick={() => {
             props.history.push("/lessons/new");
           }}
         >
-          Make New Lesson Plan
-        </button>
-      </section>
-      <div className="container-cards">
-        {lessonPlans.sort((a, b) => {
-          if (a.date < b.date) {
-            return -1;
-          } else if (a.date > b.date) {
-            return 1;
-          } else {
-            return 0;
-          }
-        }),
-        
-        lessonPlans.map(lesson => (
-          <LessonCard key={lesson.id} lesson={lesson} {...props} />
-        ))}
+          Add New Lesson
+        </Button>
+      </div>
+      <div className="container-cards row">
+        {
+          (lessonPlans.sort((a, b) => {
+            if (a.date < b.date) {
+              return -1;
+            } else if (a.date > b.date) {
+              return 1;
+            } else {
+              return 0;
+            }
+          }),
+          lessonPlans.map(lesson => (
+            <LessonCard key={lesson.id} lesson={lesson} {...props} />
+          )))
+        }
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NoteCard from "./NoteCard";
 import NoteManager from "../../modules/NoteManager";
+import {Button} from 'react-materialize'
 
 const NoteList = props => {
   const [notes, setNotes] = useState([]);
@@ -38,18 +39,23 @@ const NoteList = props => {
     <div onClick={pushToStudentCenter()}>Loading...</div>
   ) : (
     <>
-      <section className="section-content">
-      {isTeacher ? <button
-          type="button"
-          className="btn"
-          onClick={() => {
-            props.history.push("/notes/new");
-          }}
-        >
-          Write New Note
-        </button>  : null}
-      </section>
-      <div className="container-cards">
+      <div className="section center">
+      {isTeacher ? <Button
+      className = "lime lighten-4 grey-text text-darken-2"
+    node="button"
+    style={{
+      marginRight: '5px'
+    }}
+    waves="light"
+    onClick={() => {
+      props.history.push("/notes/new");
+    }}
+  >
+    Write New Note
+  </Button> : null}
+           
+      </div>
+      <div>
         {notes.map(note => (
           <NoteCard
             key={note.id}

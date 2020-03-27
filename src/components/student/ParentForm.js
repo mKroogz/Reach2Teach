@@ -31,30 +31,31 @@ const ParentForm = props => {
           alreadyClaimed = true;
           window.alert("You already have this student in your list");
         }
-      })
+      });
       if (!alreadyClaimed) {
-      StudentManager.getAll().then(allStudents => {
-        allStudents.map(child => {
-          if (
-            child.firstName === student.firstName &&
-            child.lastName === student.lastName
-          ) {
-            match = true;
-            childId = child.id;
+        StudentManager.getAll().then(allStudents => {
+          allStudents.map(child => {
+            if (
+              child.firstName === student.firstName &&
+              child.lastName === student.lastName
+            ) {
+              match = true;
+              childId = child.id;
+            }
+          });
+          if (match) {
+            const newStudentParent = {
+              studentId: childId,
+              userId: student.userId
+            };
+            ParentManager.post(newStudentParent).then(props.getMyStudents);
+          } else {
+            window.alert(
+              "Your student was not found. Please try again or contact their teacher to add them"
+            );
           }
         });
-        if (match) {
-          const newStudentParent = {
-            studentId: childId,
-            userId: student.userId
-          };
-          ParentManager.post(newStudentParent).then(props.getMyStudents);
-        } else {
-          window.alert(
-            "Your student was not found. Please try again or contact their teacher to add them"
-          );
-        }
-      })};
+      }
       evt.target.firstName.value = "";
       evt.target.lastName.value = "";
     }
@@ -64,26 +65,32 @@ const ParentForm = props => {
     <>
       <form onSubmit={constructNewChild}>
         <fieldset>
-          <div className="formgrid">
-            <label htmlFor="firstName">First Name</label>
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="firstName"
-              placeholder="First Name"
-            />
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="lastName"
-              placeholder="Last Name"
-            />
-          </div>
-          <div className="alignRight">
-            <button type="submit">Find your Child</button>
+          <div className="row">
+            <div className="input-field col s4">
+              <input
+                onChange={handleFieldChange}
+                id="firstName"
+                type="text"
+                className="validate"
+              />
+              <label for="firstName">First Name</label>
+            </div>
+            <div className="input-field col s4">
+              <input
+                onChange={handleFieldChange}
+                id="lastName"
+                type="text"
+                className="validate"
+              />
+              <label for="lastName">Last Name</label>
+            </div>
+          <button
+            className="col btn-large waves-effect waves-light blue-grey darken-4"
+            type="submit"
+            name="action"
+          >
+            Find Child
+          </button>
           </div>
         </fieldset>
       </form>

@@ -14,27 +14,31 @@ const NoteCard = props => {
   const date = formatDate();
 
   return (
-    <div className="card">
+    <div className="row">
+    <div className="col s4 push-s3 card lime lighten-5 hoverable" style={{
+      marginRight: "10%"
+    }}>
       <div className="card-content">
-        <h2>{date}</h2>
+        <h3>{date}</h3>
         <p>
           {props.note.note}
         </p>
-        {props.isTeacher ? <section className = "buttons">
-        <button
-          type="button"
+        {props.isTeacher ? <div className="card-action">
+        <a
+          className="amber-text lighten-2"
           onClick={() => props.history.push(`/notes/${props.note.id}/edit`)}
         >
-          Edit Note
-        </button>
-        <button
-          type="button"
+          Edit
+        </a>
+        <a
+          className="red-text"
           onClick={() => props.deleteNote(props.note.id)}
         >
-          Delete Note
-        </button> 
-        </section>: null}
+          Delete
+        </a> 
+        </div>: null}
       </div>
+    </div>
     </div>
   );
 };

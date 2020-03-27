@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TeacherEditForm from "./TeacherEditForm";
+import M from "materialize-css";
 
 const TeacherStudentCard = props => {
   const [isEdit, setIsEdit] = useState(false);
@@ -9,9 +10,12 @@ const TeacherStudentCard = props => {
   };
 
   const selectCurrentStudent = () => {
-    sessionStorage.setItem("current", props.student.id)
-    props.getCurrentStudent()
-  }
+    M.toast({
+      html: `${props.student.firstName} ${props.student.lastName} selected`
+    });
+    sessionStorage.setItem("current", props.student.id);
+    props.getCurrentStudent();
+  };
 
   return isEdit ? (
     <TeacherEditForm
@@ -24,22 +28,32 @@ const TeacherStudentCard = props => {
     />
   ) : (
     <div className="card">
-      <div className="card-content">
+      <div className="card-content hoverable row">
         <strong>
-          <span className={"card-name"}>
+          <span className={"col s2"}>
             {props.student.firstName} {props.student.lastName}
           </span>
         </strong>
-        <button type="button" onClick={selectCurrentStudent}>Select</button>
-        <button type="button" onClick={changeEdit}>Edit</button>
-        <button
-          type="button"
+        <i
+          onClick={changeEdit}
+          className="waves-effect col material-icons left"
+        >
+          edit
+        </i> 
+        <i
           onClick={() => {
             props.deleteStudent(props.student.id);
           }}
+          className="col material-icons left"
         >
-          Delete
-        </button>
+          delete
+        </i>        
+        <a
+          onClick={selectCurrentStudent}
+          className="col btn-small waves-effect waves-light blue-grey darken-4"
+        >
+          Select
+        </a>
       </div>
     </div>
   );

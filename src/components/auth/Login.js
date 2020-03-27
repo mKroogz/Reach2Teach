@@ -36,26 +36,28 @@ const Login = props => {
 
   return (
     <>
-      <form onSubmit={handleLogin}>
-        <fieldset>
-          <h3>Welcome back</h3>
-          <div className="formgrid">
-            <label htmlFor="inputUserName">Username: </label>
-            <input
-              onChange={handleFieldChange}
-              type="userName"
-              id="userName"
-              placeholder="Username"
-              required=""
-              autoFocus=""
-            />
-          </div>
-          <button type="submit">Let's get to planning</button>
-        </fieldset>
-      </form>
-      <Link className="nav-link" to="/register">
-        Don't have an account? Click here to register!
-      </Link>
+      <div className="section">
+        <form onSubmit={handleLogin}>
+          <fieldset>
+            <h3>Welcome back</h3>
+            <div className="input-field">
+              <input onChange={handleFieldChange} id="userName" type="text" className="validate" />
+              <label for="userName">Username</label>
+            </div>
+            <button
+              className="btn waves-effect waves-light teal lighten-2"
+              type="submit"
+              name="action"
+            >
+              Let's get to planning
+              <i className="material-icons right">fast_forward</i>
+            </button>
+          </fieldset>
+        </form>
+        <Link className="nav-link" to="/register">
+          Don't have an account? Click here to register!
+        </Link>
+      </div>
     </>
   );
 };

@@ -1,35 +1,3 @@
-nav .container {
-    display: flex;
-    padding: 0;
-    margin-bottom: 0;
-  }
-
-  header  img {
-    max-height: 100px;
-    max-width: 100px;
-    text-align: left;
-    padding: 2px;
-    display: inline;
-    margin-left: 20px;
-   margin-right: 20px;
-  }
-
-  header .site-title {
-    max-height: 50px;
-    max-width: 50px;
-    display:inline;
-    margin-left: 172px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-
-  nav .container li {
-    flex: 1;
-    padding: 10px;
-    text-align: center;
-    font-size: 1.5em;
-    color: cornsilk;
-    box-sizing: border-box;
-    background-color: rgb(69, 172, 190);
-    list-style-type: none;
-  }
+/* .iconHover:hover {
+  background-color: #fafafa !important; 
+} */

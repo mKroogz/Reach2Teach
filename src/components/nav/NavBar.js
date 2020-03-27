@@ -1,12 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./NavBar.css";
 
 const NavBar = props => {
   const handleLogout = () => {
-    if(window.confirm("Are you sure you want to log out?")){
-    props.clearUser();
+    if (window.confirm("Are you sure you want to log out?")) {
+      props.clearUser();
     }
   };
 
@@ -16,13 +15,16 @@ const NavBar = props => {
 
   return (
     <header>
-      <img
-        src="https://www.svgrepo.com/show/2873/apple.svg"
-        alt="Apple Icon"
-      ></img>
-      <h1 className="site-title">Reach2Teach</h1>
-      <nav>
-        <ul className="container">
+      <nav className="teal lighten-2">
+        <a href="#" className="brand-logo">
+          <img
+            src="https://www.svgrepo.com/show/2873/apple.svg"
+            alt="Apple Icon"
+            height="64px"
+          ></img>
+        </a>
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <div className="center-align">
           {props.hasUser ? (
             <li>
               <Link className="nav-link" to="/">
@@ -64,13 +66,10 @@ const NavBar = props => {
               </Link>
             </li>
           ) : null}
+          </div>
           {props.hasUser ? (
-            <li>
-              <button type="button" onClick={handleStudentButton}>
-                Student Center
-              </button>
-            </li>
-          ) : null}
+          <a className="btn pulse waves-effect waves-light cyan lighten-1" onClick={handleStudentButton}>Student Center</a>
+        ) : null}
         </ul>
       </nav>
     </header>

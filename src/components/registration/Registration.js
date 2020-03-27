@@ -34,7 +34,10 @@ const Registration = props => {
     let valid = true;
     UserManager.getAll().then(users => {
       users.map(user => {
-        if (user.userName === register.userName || user.email === register.email) {
+        if (
+          user.userName === register.userName ||
+          user.email === register.email
+        ) {
           valid = false;
           alert("Username or email already in database");
         }
@@ -78,49 +81,76 @@ const Registration = props => {
       <form onSubmit={handleReg}>
         <fieldset>
           <h3>Make a new account</h3>
-          <div className="formgrid">
-            <label htmlFor="inputUserName">Username: </label>
-            <input
-              onChange={handleRegFieldChange}
-              type="userName"
-              id="userName"
-              placeholder="Username"
-              required=""
-              autoFocus=""
-            />
-            <label htmlFor="inputEmail">Email: </label>
-            <input
-              onChange={handleRegFieldChange}
-              type="email"
-              id="email"
-              placeholder="Email"
-              required=""
-            />
+          <div>
+          <div className="row">
+            <div className="input-field col s12">
+              <input
+                onChange={handleRegFieldChange}
+                type="text"
+                id="userName"
+                required
+              />
+              <label for="userName">Username </label>
+            </div>
+            </div>
+            <div className="row">
+            <div className="input-field col s12">
+              <input
+                onChange={handleRegFieldChange}
+                type="email"
+                id="email"
+                required
+              />
+              <label for="email">Email </label>
+            </div>
+            </div>
 
-            <label htmlFor="inputFirstName">First Name: </label>
-            <input
-              onChange={handleRegFieldChange}
-              type="firstName"
-              id="firstName"
-              placeholder="First Name"
-              required=""
-            />
-
-            <label htmlFor="inputLastName">Last Name: </label>
-            <input
-              onChange={handleRegFieldChange}
-              type="lastName"
-              id="lastName"
-              placeholder="Last Name"
-              required=""
-            />
+            <div className="row">
+              <div className="input-field col s6">
+                <input onChange={handleRegFieldChange} id="firstName" type="text" className="validate" />
+                <label for="firstName">First Name</label>
+              </div>
+              <div className="input-field col s6">
+                <input onChange={handleRegFieldChange} id="lastName" type="text" className="validate" />
+                <label for="lastName">Last Name</label>
+              </div>
+            </div>
           </div>
-          <button onClick={typeTeacher} type="submit" id="isAdmin">
-            Register as Teacher
-          </button>
-          <button onClick={typeParent} type="submit" id="isAdmin">
-            Register as Parent
-          </button>
+          <div className="row">
+          <button
+              className="col s4 push-s1 btn waves-effect waves-light teal lighten-1"
+              onClick={typeTeacher}
+              type="submit"
+              name="action"
+              id="isAdmin"
+            >
+              <a href="#" className="brand-logo">
+          <img
+            src="https://www.svgrepo.com/show/105825/educational-book-and-apple-for-the-teacher.svg"
+            alt="Teacher Icon"
+            width="30px"
+          ></img>
+        </a>
+              Register as Teacher
+            </button>
+          <button
+              className="col s4 push-s3 btn waves-effect waves-light deep-purple lighten-2"
+              onClick={typeParent}
+              type="submit"
+              name="action"
+              id="isAdmin"
+            >
+              <a href="#" className="brand-logo">
+          <img
+            src="https://www.svgrepo.com/show/236138/fatherhood-parenthood.svg"
+            alt="Parent Icon"
+            height="29px"
+            width="36px"
+          ></img>
+        </a>
+              Register as Parent
+            </button>
+            </div>
         </fieldset>
       </form>
       <Link className="nav-link" to="/login">

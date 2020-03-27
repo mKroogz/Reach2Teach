@@ -49,8 +49,8 @@ const MilestoneEditForm = props => {
             />
           </div>
           <div className="alignRight">
-            <button type="submit">
-              Save Changes
+            <button className="waves-effect waves-light btn blue-grey lighten-3 black-text" type="submit">
+              Save
             </button>
           </div>
         </fieldset>
