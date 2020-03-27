@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NoteManager from "../../modules/NoteManager";
+import { Row, Textarea } from "react-materialize";
 import moment from "moment";
 
 const NoteForm = props => {
@@ -61,42 +62,41 @@ const NoteForm = props => {
     <>
       <form>
         <fieldset>
-        <div className="Back">
-            <button
-              type="button"
-              disabled={isLoading}
+          <div>
+            <a
+              className="waves-effect waves-light btn"
               onClick={() => props.history.push("/notes")}
             >
-              Go Back
-            </button>
+              <i className="material-icons left">fast_rewind</i>Back
+            </a>
           </div>
-          <div className="formgrid">
-            <label htmlFor="note">Note:</label>
-            <textarea
-              rows="10"
-              cols="75"
-              onChange={handleFieldChange}
-              id="note"
-              placeholder="Type out your note here"
-            />
-          </div>
-          <div className="Public">
-            <button
-              type="button"
+          <Row>
+              <Textarea
+                onChange={handleFieldChange}
+                id="note"
+                label="Write Note here..."
+                l={12}
+                m={12}
+                s={12}
+                xl={12}
+              />
+            </Row>
+          <div className="row">
+            <a
+              className="col s4 push-s1 btn waves-effect waves-light teal darken-1"
               disabled={isLoading}
               onClick={constructPublicNote}
             >
-              Make Public Note
-            </button>
-          </div>
-          <div className="Private">
-            <button
-              type="button"
+              <i className="material-icons right">lock_open</i>Make Public Note
+            </a>
+
+            <a
+              className="col s4 push-s3 btn waves-effect waves-light deep-purple darken-2"
               disabled={isLoading}
               onClick={constructPrivateNote}
             >
-              Make Private Note
-            </button>
+              <i className="material-icons right amber-text">lock</i>Make Private Note
+            </a>
           </div>
         </fieldset>
       </form>

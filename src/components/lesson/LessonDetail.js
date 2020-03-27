@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import LessonManager from "../../modules/LessonManager";
 
 const LessonDetail = props => {
-  const [lesson, setLesson] = useState({ title: "", plan: "", studentId: "", date: "" });
+  const [lesson, setLesson] = useState({
+    title: "",
+    plan: "",
+    studentId: "",
+    date: ""
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -11,40 +16,47 @@ const LessonDetail = props => {
         title: lesson.title,
         plan: lesson.plan,
         studentId: lesson.studentId,
-        date: lesson.date,
+        date: lesson.date
       });
       setIsLoading(false);
     });
   }, [props.lessonId]);
 
   const handleDelete = () => {
-  setIsLoading(true);
-  LessonManager.delete(props.lessonId).then(() =>
-    props.history.push("/Lessons")
-  );
-};
- 
+    setIsLoading(true);
+    LessonManager.delete(props.lessonId).then(() =>
+      props.history.push("/Lessons")
+    );
+  };
+
   return (
-    <div className="card">
+    <div className="row">
+    <div className="cyan lighten-5 card hoverable col s8">
       <div className="card-content">
-        <h3>
-          <span style={{ color: "darkslategrey" }}>{lesson.title}</span>
-        </h3>
+        <a
+          className="waves-effect waves-light btn"
+          onClick={() => props.history.push("/lessons")}
+        >
+          <i className="material-icons left">fast_rewind</i>Back
+        </a>
+        <h3>{lesson.title}</h3>
         <p>{lesson.plan}</p>
         <h4>{lesson.date}</h4>
-        <button
-          type="button"
+        <div className="card-action">
+        <a
           onClick={() => props.history.push(`/lessons/${props.lessonId}/edit`)}
         >
-          Edit
-        </button>
-        <button type="button" disabled={isLoading} onClick={handleDelete}>
-          Delete
-        </button>
-        <button type="button" disabled={isLoading} onClick={() => props.history.push(`/lessons`)}>
-          Go Back
-        </button>
+          edit
+        </a>
+        <a
+          className="red-text"
+          onClick={handleDelete}
+        >
+          delete
+        </a>
+        </div>
       </div>
+    </div>
     </div>
   );
 };

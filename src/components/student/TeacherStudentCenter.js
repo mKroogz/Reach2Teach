@@ -61,7 +61,7 @@ const TeacherStudentCenter = props => {
         <TeacherForm key={1} getStudents={getStudents} {...props} />
       </div>
       <h2>Your Current Student:</h2>
-      <div>
+      <div className="hoverable">
         <TeacherCurrentStudent
           key={1}
           currentStudent={currentStudent}

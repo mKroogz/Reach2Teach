@@ -64,7 +64,14 @@ const MilestoneList = props => {
 
   return !isManaging ? (
     <>
-      <div className="conatainerCards">
+      <div className="center section">
+      {isTeacher ?<button type="button" className="btn blue-grey lighten-3 black-text" onClick={toggleManageView}>
+          Manage Milestones
+        </button> : null}
+      </div>
+      <div className= "row">
+    <div className = "col s6 push-s2 card hoverable grey lighten-3">
+      <div>
         {completed.map(milestone => (
           <MilestoneCard
             key={milestone.id}
@@ -84,11 +91,8 @@ const MilestoneList = props => {
           />
         ))}
       </div>
-      <section className="manageViewToggle">
-      {isTeacher ?<button type="button" className="btn" onClick={toggleManageView}>
-          Manage Milestones
-        </button> : null}
-      </section>
+      </div>
+      </div>
     </>
   ) : (
     <>
@@ -96,7 +100,7 @@ const MilestoneList = props => {
       <div>
         <MilestoneForm key={1} getMilestones={getMilestones} {...props} />
       </div>
-      <div className="conatainerCards">
+      <div>
         {milestones.map(milestone => (
           <MilestoneManageCard
             key={milestone.id}
@@ -108,8 +112,8 @@ const MilestoneList = props => {
         ))}
       </div>
       <section className="manageViewToggle">
-        <button type="button" className="btn" onClick={toggleManageView}>
-          Save Changes
+        <button type="button" className="btn blue-grey lighten-3 black-text" onClick={toggleManageView}>
+          Save
         </button>
       </section>
     </>

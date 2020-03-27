@@ -17,20 +17,26 @@ const MilestoneManageCard = props => {
       {...props}
     />
   ) : (
-    <div className="card">
+    <div className="card hoverable grey lighten-4">
       <div className="card-content">
-          <span className="card-name">
+          <span className="card-title">
             {props.milestone.milestone}
           </span>
-        <button type="button" onClick={changeEdit}>Edit</button>
-        <button
-          type="button"
+          <i
+          onClick={changeEdit}
+          className="waves-effect col material-icons left"
+        >
+          edit
+        </i> 
+        <i
           onClick={() => {
             props.deleteMilestone(props.milestone.id);
           }}
+          className="col material-icons left"
         >
-          Delete
-        </button>
+          delete
+        </i>      
+         
       </div>
     </div>
   );

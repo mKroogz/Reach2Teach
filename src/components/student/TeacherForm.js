@@ -19,41 +19,44 @@ const TeacherForm = props => {
     if (student.firstName === "" || student.lastName === "") {
       window.alert("Please fully fill out student name");
     } else {
-      StudentManager.post(student).then(props.getStudents)
-      evt.target.firstName.value = ""
-      evt.target.lastName.value = ""
+      StudentManager.post(student).then(props.getStudents);
+      evt.target.firstName.value = "";
+      evt.target.lastName.value = "";
     }
   };
 
-  
   return (
     <>
       <form onSubmit={constructNewStudent}>
-        <fieldset>
           <div className="formgrid">
-            <label htmlFor="firstName">First Name</label>
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="firstName"
-              placeholder="First Name"
-            />
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="lastName"
-              placeholder="Last Name"
-            />
+            <div className="row">
+              <div className="input-field col s4">
+                <input
+                  onChange={handleFieldChange}
+                  id="firstName"
+                  type="text"
+                  className="validate"
+                />
+                <label for="firstName">First Name</label>
+              </div>
+              <div className="input-field col s4">
+                <input
+                  onChange={handleFieldChange}
+                  id="lastName"
+                  type="text"
+                  className="validate"
+                />
+                <label for="lastName">Last Name</label>
+              </div>
+                <button
+                  className="col btn-large waves-effect waves-light blue-grey darken-4"
+                  type="submit"
+                  name="action"
+                >
+                  Add Student
+                </button>
+            </div>
           </div>
-          <div className="alignRight">
-            <button type="submit">
-              Create New Student
-            </button>
-          </div>
-        </fieldset>
       </form>
     </>
   );

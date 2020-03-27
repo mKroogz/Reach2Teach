@@ -4,9 +4,9 @@ const TeacherCurrentStudent = props => {
   return (
     <>
       <div className="card">
-        <div className="card-content">
+        <div className="card-content row">
           <strong>
-            <span className="card-name">
+            <span className="card-name col">
               {props.currentStudent.firstName} {props.currentStudent.lastName}
             </span>
           </strong>

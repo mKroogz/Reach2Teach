@@ -57,7 +57,7 @@ const TeacherEditForm = props => {
             />
           </div>
           <div className="alignRight">
-            <button type="submit">
+            <button className="btn-flat waves-effect" type="submit">
               Save Changes
             </button>
           </div>

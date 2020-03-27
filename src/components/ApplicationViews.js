@@ -92,7 +92,7 @@ const ApplicationViews = props => {
           if (hasUser && isTeacher === 1) {
             return <LessonList {...props} />
           } else if (hasUser && isTeacher === 0) {
-            return <CatchParent/>
+            return <CatchParent {...props}/>
           } else {
             return <Redirect to="/login" />
           }
