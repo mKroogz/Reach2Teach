@@ -1,4 +1,4 @@
-![ Logo ](./Reach2Teach.png)
+![ Logo ](./readmeimg/Reach2Teach.png)
 
 # Welcome to Reach2Teach! 
 Have you ever found yourself in the position of teaching a toddler and wished you had a tool to lesson plan and scrapbook all at once? Would you like a way to keep your students, their lessons, and their milestones in one place so that they are quickly accessible?  Do you even want a way to reach out to parents and show them their child's progress? If you answered yes, look no futher than Reach2Teach.
@@ -54,7 +54,7 @@ Reach2Teach is a single page, React application that was designed to save early 
 ## Reach2Teach Tech Stack
 
 
-<div align="center"><img src="./readmeimg/react.png" alt="React.js" width="85" height="85" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/ReactMaterialize.png" alt="React Materialize" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/javascriptyellow.png" alt="Javascript" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/Materialize.png" alt="Materialize" width="100" height="100" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/css3.png" alt="CSS" width="75" height="100" /></div>
+<div align="center"><img src="./readmeimg/react.png" alt="React.js" width="85" height="85" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/ReactMaterialze.png" alt="React Materialize" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/javascriptyellow.png" alt="Javascript" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/Materialize.png" alt="Materialize" width="100" height="100" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/css3.png" alt="CSS" width="75" height="100" /></div>
 
 
 <div align="center"><img src="./readmeimg/json.png" alt="JSON" width="175" height="100" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/html.png" alt="HTML" width="100" height="100" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/moment.png" alt="moment" width="125" height="100" /></div>
